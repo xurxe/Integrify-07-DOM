@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <fieldset>
+            <legend>Enter the mass:</legend>
+            <input type="text" id="inputMass" name='inputMass'>
 
-    <h1 class="title">Title 1</h1>
-    <h1 id="title2">Title 2</h1>
-    <h1>Title 3</h1>
+            <input type='radio' id="unitMassG" name="unitMass" value='1' checked>
+            <label for= "unitMassG">g</label>
 
-    <h2 class= "subtitle">Subtitle 1</h2>
-    <h2 id = "subtitle2">Subtitle 2</h2>
-    <h2>Subtitle 3</h2>
+            <input type='radio' id="unitMassKg" name="unitMass" value='1000'>
+            <label for= "unitMassKg">kg</label>
+        </fieldset>
 
-    <input type='text' id='inputRadius'>
-    <button type="submit" id="calculateAreaButton">Calculate area</button>
-    <p id="calculateAreaResult"></p>
+        <fieldset>
+            <legend>Enter the volume:</legend>
+            <input type="text" id="inputVolume" name='inputVolume'>
 
-    <div class = "wrapper">
+            <input type='radio' id="unitVolumeCm3" name="unitVolume" value='1' checked>
+            <label for= "unitVolumeCm3">cm<sup>3</sup></label>
 
-    </div>
+            <input type='radio' id="unitVolumeL" name="unitVolume" value='1000'>
+            <label for= "unitVolumeL">l</label>
+        </fieldset>
 
+        <button type="submit" id="calculateDensityButton">Calculate density</button>
+        <p id="calculateDensityResult"></p>
 
-    <script src="lesson-notes.js"></script>
-</body>
+        <script src="./script.js"></script>
+    </body>
 </html>

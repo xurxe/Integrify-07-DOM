@@ -159,19 +159,22 @@ calculateDensityButton.addEventListener('click', function() {
 
     // the mass is the value entered in the textbox, times the unit multiplier
     // (the default unit is g, so the multiplier is in terms of g. For example: 1 kg = 1000 g)
-    const mass = inputMass.value * unitMass.value;
+    const mass = inputMass.value;
+    const massStandard = inputMass.value * unitMass.value;
 
 
 
     // do the same as above for the volume
     const inputVolume = document.querySelector('#inputVolume');
     const unitVolume = document.querySelector('input[name=unitVolume]:checked');
-    const volume = inputVolume.value * unitVolume.value;
+    const volume = inputVolume.value;
+    const volumeStandard = inputVolume.value * unitVolume.value;
 
 
 
     // calculate the density
     const density = mass / volume;
+    const densityStandard = massStandard / volumeStandard;
 
 
 
@@ -188,12 +191,27 @@ calculateDensityButton.addEventListener('click', function() {
 
 
     // write a sentence with the density of the object
-    calculateDensityResult.innerHTML = `The density of your object is ${density} ${unitMassLabel} / ${unitVolumeLabel}.`;
+    if (unitMass.value == 1 && unitVolume.value == 1) {
+        calculateDensityResult.innerHTML = `The density of your object is ${density} ${unitMassLabel} / ${unitVolumeLabel}.`;
+    }
+
+    else {
+        calculateDensityResult.innerHTML = `The density of your object is ${density} ${unitMassLabel} / ${unitVolumeLabel}, which is the same as ${densityStandard} g / cm<sup>3</sup>.`;
+    }
 
 
 
-    // write a sentence comparing the density of the object to the density of a planet
-    compareToPlanet.innerHTML = `The density of your object is closest to the density of... .`;
+    // loop through planets to find the index of the planet closest in density
+    for (i = 0; i < planets.length; i++) {
+        if (planets[i].densityRange[0] <= densityStandard && densityStandard < planets[i].densityRange[1]) {
+            planetName = planets[i].name;
+            planetDensity = planets[i].density;
+            break;
+        }
+    }
 
 
+
+    // write a sentence comparing the density of the object to the density of that planet
+    compareToPlanet.innerHTML = `This is closest to the density of ${planetName}, which is ${planetDensity} g / cm<sup>3</sup>.`;
 });

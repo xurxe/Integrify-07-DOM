@@ -1,4 +1,4 @@
-// WED 06.MAR.2017 ************************************************************************************************
+// WED 06.MAR.2017 ************************************************************
 
 // DOM (Document Object Model)
 
@@ -127,3 +127,200 @@ for (let i = 0; i < 10; i++) {
     }
     document.body.append(box);
 }
+
+
+
+// WED 13.MAR.2019 **********************************************************
+
+// EVENT LISTENERS
+// Most activities we do on a computer are events (click, type, etc)
+
+/* const todos = ['Task 1', 'Task 2', 'Task 3'];
+let todo;
+const todosWrapper = document.querySelector('.todo-wrapper');
+const addInput = document.querySelector('#add-input')
+const addButton = document.querySelector('#add-button');
+
+function displayTodos() {
+    for (let i = 0; i < todos.length; i++) {
+        todo = document.createElement('li');
+        todo.textContent = todos[i];
+
+        let editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        todo.appendChild(editButton);
+
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        todo.appendChild(deleteButton);
+        deleteButton.addEventListener('click', function() {
+            deleteTodo(i);
+        });
+
+        todosWrapper.appendChild(todo);
+    }
+};
+
+displayTodos();
+
+function addTodo(task) {
+    todos.push(task);
+    return todos;
+};
+
+addButton.addEventListener('click', function() {
+    if (addInput.value != '') {
+        todosWrapper.innerHTML = '';
+        addTodo(addInput.value);
+        displayTodos();
+    }
+});
+
+document.body.addEventListener('keydown', function() {
+    if (event.keyCode === 13 && addInput.value != '') {
+        todosWrapper.innerHTML = '';
+        addTodo(addInput.value);
+        displayTodos();
+    }
+});
+
+function deleteTodo(index) {
+    todosWrapper.innerHTML = '';
+    todos.splice(index, 1);
+    console.log(todos);
+    displayTodos();
+}; */
+
+
+/* document.addEventListener('mouseover', function() {
+    console.log(event.pageX);
+    console.log(event.pageY);
+});
+
+addInput.addEventListener('keypress', function() {
+    console.log(event.target.value);
+    console.log(event.keyCode);
+});
+
+addInput.addEventListener('keyup', function() {
+    console.log(event.target.value);
+}); */
+
+function displayCurrentDateTime() {
+    var currentDate = new Date();
+    day = "00" + currentDate.getDate();
+    day = day.substr(-2);
+    month = "00" + (currentDate.getMonth() + 1);
+    month = month.substr(-2);
+    year = "0000" + currentDate.getFullYear();
+    year = year.substr(-4);
+    hour = "00" + currentDate.getHours();
+    hour = hour.substr(-2);
+    minute = "00" + currentDate.getMinutes();
+    minute = minute.substr(-2);
+    return `${day}/${month}/${year} ${hour}:${minute}`;
+};
+
+let charset = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+function taskIdGenerator(){
+    let taskIdArray = [];
+    for (i = 0; i < 8; i++) {
+        let index = Math.floor(Math.random() * charset.length);
+        taskIdArray.push(charset[index]);
+    }
+    let taskId = taskIdArray.join('');
+    return taskId;
+}
+
+
+
+const todos = [
+    {
+        id: taskIdGenerator(),
+        name: 'Task 1',
+        date: displayCurrentDateTime(),
+        completed: false
+    },
+
+    {
+        id: taskIdGenerator(),
+        name: 'Task 2',
+        date: displayCurrentDateTime(),
+        completed: false
+    },
+    
+    {
+        id: taskIdGenerator(),
+        name: 'Task 3',
+        date: displayCurrentDateTime(),
+        completed: false
+    },
+];
+
+let todo;
+const todosWrapper = document.querySelector('.todo-wrapper');
+const addInput = document.querySelector('#add-input')
+const addButton = document.querySelector('#add-button');
+
+
+
+function displayTodos() {
+    for (let i = 0; i < todos.length; i++) {
+        todo = document.createElement('li');
+        todo.textContent = todos[i].name;
+
+        let date = document.createElement('span');
+        date.textContent = todos[i].date;
+        todo.appendChild(date);
+
+        let editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        todo.appendChild(editButton);
+
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        todo.appendChild(deleteButton);
+        deleteButton.addEventListener('click', function() {
+            deleteTodo(i);
+        });
+
+        todosWrapper.appendChild(todo);
+    }
+};
+
+displayTodos();
+
+function addTodo(task) {
+    todos.push(task);
+    return todos;
+};
+
+addButton.addEventListener('click', function() {
+    if (addInput.value != '') {
+        todosWrapper.innerHTML = '';
+        addTodo(addInput.value);
+        displayTodos();
+    }
+});
+
+document.body.addEventListener('keydown', function() {
+    if (event.keyCode === 13 && addInput.value != '') {
+        todosWrapper.innerHTML = '';
+        addTodo(addInput.value);
+        displayTodos();
+    }
+});
+
+function deleteTodo(index) {
+    todosWrapper.innerHTML = '';
+    todos.splice(index, 1);
+    console.log(todos);
+    displayTodos();
+};
+
+
+// content editable
+
+
+
+/*  */
